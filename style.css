@@ -1,0 +1,109 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilo do Body */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1d1f21;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Contêiner do diagrama */
+  .diagram-container {
+    text-align: center;
+    background-color: #333333;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    max-width: 1600px;
+    width: 100%;
+    height: 95vh;
+    overflow: hidden;
+  }
+  
+  /* Título do diagrama */
+  h1 {
+    color: #ffffff;
+    font-size: 2.4em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Estilo do contêiner GoJS */
+  .diagram {
+    width: 100%;
+    height: 85vh;
+    background-color: #1d1f21;
+    border: 2px solid #555;
+    border-radius: 10px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Nós com gradientes */
+  .gojs-node {
+    text-align: center;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    transition: transform 0.3s, background 0.3s;
+  }
+  
+  /* Gradientes para diferentes atores e casos de uso */
+  .gojs-node.student {
+    background: linear-gradient(135deg, #11998e, #38ef7d); /* Gradiente para aluno */
+  }
+  
+  .gojs-node.teacher {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b); /* Gradiente para professor */
+  }
+  
+  .gojs-node.action {
+    background: linear-gradient(135deg, #00c6ff, #0072ff); /* Gradiente para ações gerais */
+  }
+  
+  .gojs-node.payment {
+    background: linear-gradient(135deg, #f7971e, #ffd200); /* Gradiente para pagamento */
+  }
+  
+  /* Hover em todos os nós */
+  .gojs-node:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Texto nos nós */
+  .gojs-text {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Conexões */
+  .gojs-link {
+    stroke: #ffffff;
+    stroke-width: 2px;
+  }
+  
+  .gojs-label {
+    font-style: italic;
+    font-size: 1.2em;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  

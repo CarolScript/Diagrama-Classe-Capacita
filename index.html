@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagrama de Caso de Uso - Âmbito Capacita</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="diagram-container">
+    <h1>Diagrama de Caso de Uso - Âmbito Capacita</h1>
+
+    <!-- Atores -->
+    <div class="actors">
+      <div class="actor" id="usuario">Usuário</div>
+      <div class="actor" id="instrutor">Instrutor</div>
+      <div class="actor" id="administrador">Administrador</div>
+      <div class="actor" id="sistema-pagamento">Sistema de Pagamento</div>
+    </div>
+
+    <!-- Limite do Sistema -->
+    <div class="system-boundary">
+      <p class="system-title">Âmbito Capacita</p>
+
+      <!-- Casos de Uso -->
+      <div class="use-case" id="cadastrar-usuario">Cadastrar Usuário</div>
+      <div class="use-case" id="visualizar-cursos">Visualizar Catálogo de Cursos</div>
+      <div class="use-case" id="realizar-compra">Realizar Compra de Curso</div>
+      <div class="use-case" id="acessar-conteudo">Acessar Aulas e Conteúdo</div>
+      <div class="use-case" id="gerar-certificado">Gerar Certificado</div>
+      <div class="use-case" id="gerenciar-conteudo">Gerenciar Conteúdo</div>
+      <div class="use-case" id="visualizar-relatorios">Visualizar Relatórios</div>
+      <div class="use-case" id="processar-pagamento">Processar Pagamento</div>
+    </div>
+
+    <!-- Conexões -->
+    <svg class="connections">
+      <!-- Conexões dos atores com os casos de uso -->
+      <line x1="50" y1="120" x2="220" y2="250" />
+      <line x1="50" y1="180" x2="220" y2="280" />
+      <line x1="50" y1="240" x2="220" y2="340" />
+      <line x1="50" y1="300" x2="220" y2="400" />
+    </svg>
+  </div>
+</body>
+</html>
+
+
+
