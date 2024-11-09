@@ -4,46 +4,113 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diagrama de Caso de Uso - Âmbito Capacita</title>
+  <!-- Link para o CSS -->
   <link rel="stylesheet" href="style.css">
+  <!-- Script do GoJS -->
+  <script src="https://unpkg.com/gojs/release/go.js"></script>
 </head>
 <body>
   <div class="diagram-container">
     <h1>Diagrama de Caso de Uso - Âmbito Capacita</h1>
-
-    <!-- Atores -->
-    <div class="actors">
-      <div class="actor" id="usuario">Usuário</div>
-      <div class="actor" id="instrutor">Instrutor</div>
-      <div class="actor" id="administrador">Administrador</div>
-      <div class="actor" id="sistema-pagamento">Sistema de Pagamento</div>
-    </div>
-
-    <!-- Limite do Sistema -->
-    <div class="system-boundary">
-      <p class="system-title">Âmbito Capacita</p>
-
-      <!-- Casos de Uso -->
-      <div class="use-case" id="cadastrar-usuario">Cadastrar Usuário</div>
-      <div class="use-case" id="visualizar-cursos">Visualizar Catálogo de Cursos</div>
-      <div class="use-case" id="realizar-compra">Realizar Compra de Curso</div>
-      <div class="use-case" id="acessar-conteudo">Acessar Aulas e Conteúdo</div>
-      <div class="use-case" id="gerar-certificado">Gerar Certificado</div>
-      <div class="use-case" id="gerenciar-conteudo">Gerenciar Conteúdo</div>
-      <div class="use-case" id="visualizar-relatorios">Visualizar Relatórios</div>
-      <div class="use-case" id="processar-pagamento">Processar Pagamento</div>
-    </div>
-
-    <!-- Conexões -->
-    <svg class="connections">
-      <!-- Conexões dos atores com os casos de uso -->
-      <line x1="50" y1="120" x2="220" y2="250" />
-      <line x1="50" y1="180" x2="220" y2="280" />
-      <line x1="50" y1="240" x2="220" y2="340" />
-      <line x1="50" y1="300" x2="220" y2="400" />
-    </svg>
+    <div id="myDiagramDiv" class="diagram"></div>
   </div>
+
+  <!-- Script para configurar o diagrama GoJS -->
+  <script>
+    function init() {
+      const $ = go.GraphObject.make;
+
+      const diagram = $(go.Diagram, "myDiagramDiv", {
+        "undoManager.isEnabled": true,
+        layout: $(go.LayeredDigraphLayout, { direction: 0, layerSpacing: 100 }),
+        padding: 20,
+        contentAlignment: go.Spot.Center,
+        autoScale: go.Diagram.UniformToFill
+      });
+
+      // Definindo o estilo dos nós
+      diagram.nodeTemplate = $(
+        go.Node,
+        "Vertical",
+        $(go.Panel, "Auto",
+          $(go.Shape, "Ellipse", {
+              fill: "#4ecca3",
+              stroke: "#333",
+              strokeWidth: 2,
+              width: 100,
+              height: 100
+            },
+            new go.Binding("fill", "color")
+          ),
+          $(go.TextBlock, {
+              font: "bold 18px Arial",
+              stroke: "#ffffff",
+              textAlign: "center"
+            },
+            new go.Binding("text", "text")
+          )
+        ),
+        $(go.TextBlock, {
+            margin: 8,
+            font: "15px Arial",
+            stroke: "#ffffff",
+            textAlign: "center"
+          },
+          new go.Binding("text", "key")
+        )
+      );
+
+      // Definindo o estilo das conexões
+      diagram.linkTemplate = $(
+        go.Link,
+        {
+          routing: go.Link.Orthogonal,
+          corner: 10,
+          relinkableFrom: true,
+          relinkableTo: true,
+        },
+        $(go.Shape, {
+          stroke: "#ffffff",
+          strokeWidth: 2.5
+        }),
+        $(go.TextBlock, {
+            font: "italic 14px Arial",
+            stroke: "#ffffff",
+            segmentOffset: new go.Point(0, -10)
+          },
+          new go.Binding("text", "relationship")
+        )
+      );
+
+      // Dados dos nós e conexões com ícones
+      diagram.model = new go.GraphLinksModel(
+        [
+          { key: "Usuário", text: "👤", color: "#6c63ff" },
+          { key: "Cadastrar Usuário", text: "📋" },
+          { key: "Visualizar Catálogo de Cursos", text: "📚" },
+          { key: "Realizar Compra de Curso", text: "💳" },
+          { key: "Acessar Aulas e Conteúdo", text: "📖" },
+          { key: "Gerar Certificado", text: "🎓" },
+          { key: "Instrutor", text: "👨‍🏫", color: "#6c63ff" },
+          { key: "Gerenciar Conteúdo", text: "⚙️" },
+          { key: "Visualizar Relatórios", text: "📊" },
+          { key: "Administrador", text: "🛠️", color: "#6c63ff" },
+          { key: "Sistema de Pagamento", text: "💻", color: "#6c63ff" }
+        ],
+        [
+          { from: "Usuário", to: "Cadastrar Usuário" },
+          { from: "Usuário", to: "Visualizar Catálogo de Cursos" },
+          { from: "Usuário", to: "Realizar Compra de Curso" },
+          { from: "Usuário", to: "Acessar Aulas e Conteúdo" },
+          { from: "Acessar Aulas e Conteúdo", to: "Gerar Certificado", relationship: "<<extend>>" },
+          { from: "Instrutor", to: "Gerenciar Conteúdo" },
+          { from: "Administrador", to: "Visualizar Relatórios" },
+          { from: "Sistema de Pagamento", to: "Realizar Compra de Curso" }
+        ]
+      );
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
 </body>
 </html>
-
-
-
